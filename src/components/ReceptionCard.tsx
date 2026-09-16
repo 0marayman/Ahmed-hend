@@ -39,11 +39,9 @@ export const ReceptionCard: React.FC<ReceptionCardProps> = ({
 
   // Calendar for September 2026
   // Days of week: إث (Mon), ثل (Tue), أر (Wed), خم (Thu), جم (Fri), سب (Sat), أح (Sun)
-  // September 1, 2026 is Tuesday.
   const daysHeader = ['إث', 'ثل', 'أر', 'خم', 'جم', 'سب', 'أح'];
   
-  // Grid layout for September 2026:
-  // Offset 1 for Monday (Sept 1 is Tuesday)
+  // Grid layout for September 2026 (September 1 is Tuesday, so 1 empty slot on Monday)
   const calendarCells = [
     { day: null },
     { day: 1 }, { day: 2 }, { day: 3 }, { day: 4 }, { day: 5 }, { day: 6 },
@@ -74,7 +72,10 @@ export const ReceptionCard: React.FC<ReceptionCardProps> = ({
       {/* Peony Flower without background on bottom-left corner */}
       <div className="absolute -bottom-4 -left-4 w-28 h-28 pointer-events-none select-none opacity-90">
         <img
-          src="/src/assets/images/flower_nobg.png"
+          src="/frame_nobg.png"
+          onError={(e) => {
+            (e.currentTarget as HTMLImageElement).src = '/src/assets/images/flower_nobg.png';
+          }}
           alt=""
           aria-hidden="true"
           className="w-full h-full object-contain -scale-x-100 drop-shadow-md"

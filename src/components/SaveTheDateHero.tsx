@@ -1,38 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Camera } from 'lucide-react';
-import { getPhoto, savePhoto } from '../utils/photoStorage';
+import React from 'react';
 
 export const SaveTheDateHero: React.FC = () => {
-  const [customPhoto, setCustomPhoto] = useState<string>('/IMG-20260916-WA0002.jpg');
-  const fileInputRef = useRef<HTMLInputElement | null>(null);
-
-  useEffect(() => {
-    getPhoto('photo_childhood', '/IMG-20260916-WA0002.jpg').then(setCustomPhoto);
-
-    const handleSync = (e: Event) => {
-      const customEvent = e as CustomEvent<{ key: string; dataUrl: string }>;
-      if (customEvent.detail?.key === 'photo_childhood') {
-        setCustomPhoto(customEvent.detail.dataUrl);
-      }
-    };
-    window.addEventListener('wedding_photos_updated', handleSync);
-    return () => window.removeEventListener('wedding_photos_updated', handleSync);
-  }, []);
-
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = async (event) => {
-        if (event.target?.result) {
-          const resultStr = event.target.result as string;
-          setCustomPhoto(resultStr);
-          await savePhoto('photo_childhood', resultStr, 'IMG-20260916-WA0002.jpg');
-        }
-      };
-      reader.readAsDataURL(file);
-    }
-  };
+  const photoUrl = '/IMG-20260916-WA0002.jpg';
 
   return (
     <div className="w-full text-center pt-8 pb-4">
@@ -41,7 +10,7 @@ export const SaveTheDateHero: React.FC = () => {
         SAVE THE DATE
       </h2>
 
-      {/* Elegant Framed Childhood Photo (Mailing Envelope Removed) */}
+      {/* Elegant Framed Childhood Photo */}
       <div className="relative w-full max-w-[320px] sm:max-w-[360px] mx-auto">
         {/* Subtle Architectural Sketch Watermark behind */}
         <div className="absolute inset-0 -top-8 -bottom-8 pointer-events-none opacity-15 overflow-hidden flex items-center justify-center">
@@ -56,30 +25,9 @@ export const SaveTheDateHero: React.FC = () => {
         <div className="relative z-10 w-full bg-white p-3.5 pb-8 rounded-2xl shadow-2xl shadow-stone-900/15 border border-[#e8ded3] transition-all hover:shadow-stone-900/25">
           <div className="relative aspect-[4/5] sm:aspect-square w-full overflow-hidden rounded-xl bg-stone-100 shadow-inner group">
             <img
-              src={customPhoto}
-              onError={() => {
-                if (customPhoto !== '/src/assets/images/IMG-20260916-WA0002.jpg') {
-                  setCustomPhoto('/src/assets/images/IMG-20260916-WA0002.jpg');
-                }
-              }}
+              src={photoUrl}
               alt="Ahmed & Hend Childhood Photo"
               className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
-            />
-
-            {/* Quick Upload / Replace Button */}
-            <button
-              onClick={() => fileInputRef.current?.click()}
-              title="تغيير الصورة أو رفع الصورة الأصلية"
-              className="absolute bottom-2.5 right-2.5 z-20 bg-white/90 hover:bg-white text-[#520b1b] p-2 rounded-full shadow-md backdrop-blur-xs transition-all opacity-80 hover:opacity-100 cursor-pointer"
-            >
-              <Camera className="w-4 h-4" />
-            </button>
-            <input
-              type="file"
-              ref={fileInputRef}
-              onChange={handleFileChange}
-              accept="image/*"
-              className="hidden"
             />
           </div>
 

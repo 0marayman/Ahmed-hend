@@ -1,44 +1,66 @@
-import { CoupleMember, WeddingEvent, StoryMilestone, GalleryPhoto, GuestWish, BankAccount } from '../types';
+import { CoupleMember, StoryMilestone, WeddingEvent, GalleryPhoto, GuestWish } from '../types';
 
-export const INITIAL_GROOM: CoupleMember = {
-  name: 'Ahmed',
-  role: 'Groom',
-  fullName: 'احمد محى الدين',
-  bio: 'مهندس معماري، عندما التقيت بهند أدركت أن كل خطوة في حياتي كانت تقودني إليها.',
-  parents: 'ابن الأستاذ محى الدين & السيدة الفاضلة',
+export const GROOM_DATA: CoupleMember = {
+  name: 'احمد محى الدين',
+  parents: 'ابن الأستاذ محى الدين وعائلته الكريمة',
+  bio: 'مهندس ومحب للحياة والمغامرة، أسعد إنسان بأن اختاره الله شريكاً لهند.',
+  quote: 'وجدت فيكِ السكينة، والوطن، وأجمل ما تمنيت في حياتي.',
   avatar: '/IMG-20260916-WA0005.jpg',
-  quote: '"منذ اللحظة الأولى، علمت أن قلبي قد وجد موطنه الحقيقي."',
-  instagram: '@ahmed.mohy'
+  instagram: '@ahmed_mohy'
 };
 
-export const INITIAL_BRIDE: CoupleMember = {
-  name: 'Hend',
-  role: 'Bride',
-  fullName: 'هند أيمن',
-  bio: 'مهندسة ومصممة، رفيقة الدرب والروح التي أضاءت كل تفاصيل أيامي.',
-  parents: 'ابنة الأستاذ أيمن & السيدة الفاضلة',
+export const BRIDE_DATA: CoupleMember = {
+  name: 'هند أيمن',
+  parents: 'كريمة الأستاذ أيمن وعائلته الكريمة',
+  bio: 'روح تملأ المكان دفئاً وجمالاً، تنتظر بداية فصلها الجديد مع أحمد.',
+  quote: 'معك تبدأ كل حكايات السعادة، ولك في قلبي حب لا ينتهي.',
   avatar: '/IMG-20260916-WA0005.jpg',
-  quote: '"أنت لحني المفضل اليوم وكل يوم، وبداية أجمل فصول العمر."',
-  instagram: '@hend.ayman'
+  instagram: '@hend_ayman'
 };
+
+export const STORY_MILESTONES: StoryMilestone[] = [
+  {
+    id: 'milestone-1',
+    date: 'منذ الطفولة',
+    title: 'بداية الحكاية',
+    location: 'القاهرة، مصر',
+    description: 'قصة بريئة جمعت قلبين من الصغر وكتب لها القدر أن تلتقي وتكتمل.',
+    image: '/IMG-20260916-WA0002.jpg'
+  },
+  {
+    id: 'milestone-2',
+    date: 'يوم الخطوبة',
+    title: 'خاتم العهد والوعد',
+    location: 'القاهرة',
+    description: 'خطوة نحو الحلم المشترك، وعهد بالمودة والرحمة لبناء حياة مباركة.',
+    image: '/IMG-20260916-WA0004.jpg'
+  },
+  {
+    id: 'milestone-3',
+    date: '26 سبتمبر 2026',
+    title: 'يوم الزفاف الميمون',
+    location: 'مسجد المشير طنطاوي - قاعة الساحة',
+    description: 'اليوم الذي نتوجه بحضوركم ودعواتكم الصالحة التي تسعد قلوبنا.',
+    image: '/IMG-20260916-WA0005.jpg'
+  }
+];
 
 export const WEDDING_EVENTS: WeddingEvent[] = [
   {
-    id: 'reception',
-    title: 'معلومات حفل الزفاف',
-    subTitle: 'حفل الزفاف',
+    id: 'ceremony',
+    title: 'عقد القران وحفل الزفاف',
+    subTitle: 'مراسيم الزفاف واستقبال الأهل والأحباب',
     date: 'السبت، 26 سبتمبر 2026',
-    time: 'PM 7:00',
-    timestamp: '2026-09-26T19:00:00',
-    venueName: 'مسجد المشير طنطاوي قاعة الساحة',
-    address: 'محور المشير طنطاوي، القاهرة، مصر',
+    time: '07:00 مساءً',
+    venueName: 'مسجد المشير طنطاوي - قاعة الساحة',
+    address: 'محور المشير طنطاوي، التجمع الخامس، القاهرة الجديدة',
+    notes: 'حضوركم شرف لنا ويزيد بهجتنا، نرجو التواجد قبل الموعد بـ 15 دقيقة.',
+    dressCode: 'Formal / الزي الرسمي الأنيق',
+    dressColors: ['#520b1b', '#1f2937', '#d4af37', '#ffffff'],
     coordinates: {
       lat: 30.017118,
       lng: 31.382790
-    },
-    dressCode: 'Formal Chic / أزياء رسمية أنيقة',
-    dressColors: ['#520b1b', '#F5EBE6', '#D4AF37', '#2C2725'],
-    notes: 'حضوركم شرف لنا ويسعدنا مشاركتكم فرحتنا في هذه الليلة المميزة.'
+    }
   }
 ];
 
@@ -46,71 +68,49 @@ export const GALLERY_PHOTOS: GalleryPhoto[] = [
   {
     id: 'photo-1',
     url: '/IMG-20260916-WA0002.jpg',
-    title: 'صورة الطفولة البريئة',
-    caption: 'منذ الصغر والقدر يكتب حكايتنا الجميلة',
-    category: 'portraits',
-    aspectRatio: 'square'
+    title: 'Save The Date',
+    caption: 'أحمد وهند منذ الطفولة',
+    category: 'portraits'
   },
   {
     id: 'photo-2',
     url: '/IMG-20260916-WA0005.jpg',
-    title: 'لحظات الخطوبة المباركة',
-    caption: 'معاً في بداية طريق ملؤه المودة والرحمة',
-    category: 'moments',
-    aspectRatio: 'square'
+    title: 'أحمد & هند',
+    caption: 'معاً في أجمل أيام العمر',
+    category: 'prewedding'
   },
   {
     id: 'photo-3',
     url: '/IMG-20260916-WA0004.jpg',
-    title: 'خواتم الزفاف والزهور',
-    caption: 'عهد المحبة والوفاء لآخر العمر',
-    category: 'details',
-    aspectRatio: 'square'
+    title: 'دبل الخطوبة والورد',
+    caption: 'رمز الوفاء والرباط المقدس',
+    category: 'details'
   }
 ];
 
 export const INITIAL_WISHES: GuestWish[] = [
   {
     id: 'wish-1',
-    author: 'كريم & ياسمين',
-    guestSide: 'groom',
-    message: 'ألف مليون مبروك لأجمل عروسين أحمد وهند! بارك الله لكما وبارك عليكما وجمع بينكما في خير.',
-    likes: 24,
-    createdAt: 'منذ ساعتين'
+    author: 'عائلة العريس والعروسة',
+    guestSide: 'mutual',
+    message: 'بارك الله لكما وبارك عليكما وجمع بينكما في خير، وجعل أيامكم عامرة بالمودة والرحمة.',
+    likes: 12,
+    createdAt: 'اليوم'
   },
   {
     id: 'wish-2',
-    author: 'نور الشريف',
-    guestSide: 'bride',
-    message: 'هنودة الجميلة وأحمد الغالي، فرحتي بيكم ما تتوصفش! ربنا يسعدكم ويجعل كل أيامكم هنا وسرور.',
-    likes: 31,
-    createdAt: 'منذ 5 ساعات'
+    author: 'أصدقاء أحمد',
+    guestSide: 'groom',
+    message: 'ألف مبروك يا غالي، ربنا يتمم لك على ألف خير ويسعدكم دائماً يا رب!',
+    likes: 8,
+    createdAt: 'منذ قليل'
   },
   {
     id: 'wish-3',
-    author: 'العم طارق وحرمه',
-    guestSide: 'mutual',
-    message: 'أجمل التهاني القلبية بالزفاف المبارك، دمتم سكنًا وملاذًا لبعضكما البعض دائماً وأبداً.',
-    likes: 19,
-    createdAt: 'أمس'
-  }
-];
-
-export const BANK_ACCOUNTS: BankAccount[] = [
-  {
-    recipientRole: 'العريس',
-    ownerName: 'احمد محى الدين',
-    bankName: 'البنك التجاري الدولي (CIB)',
-    accountNumber: '1000 4829 9182 04',
-    branch: 'فرع القاهرة',
-    qrCodeUrl: 'https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=Ahmed%20Mohy%20Eldin%20CIB%2010004829918204'
-  },
-  {
-    recipientRole: 'العروسة',
-    ownerName: 'هند أيمن',
-    bankName: 'بنك HSBC مصر',
-    accountNumber: '028 849102 001',
-    branch: 'فرع مصر الجديدة',
-    qrCodeUrl: 'https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=Hend%20Ayman%20HSBC%20028849102001'
+    author: 'صديقات هند',
+    guestSide: 'bride',
+    message: 'أحلى وأجمل عروسة، ربنا يفرح قلبك وينور طريقكم بالخير والبركة.',
+    likes: 9,
+    createdAt: 'منذ قليل'
   }
 ];

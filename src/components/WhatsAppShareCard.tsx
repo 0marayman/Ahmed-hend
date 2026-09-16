@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MessageCircle, Check, Copy, Share2 } from 'lucide-react';
+import { MessageCircle, Check, Copy } from 'lucide-react';
 
 interface WhatsAppShareCardProps {
   groomName?: string;

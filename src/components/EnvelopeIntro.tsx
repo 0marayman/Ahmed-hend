@@ -56,27 +56,33 @@ export const EnvelopeIntro: React.FC<EnvelopeIntroProps> = ({ onOpen }) => {
 
       {/* Center Parchment Card with Peonies Corner Accents */}
       <div className="relative z-10 w-full max-w-[360px] sm:max-w-[380px] bg-[#FAF7F2] rounded-[32px] p-7 sm:p-9 shadow-2xl shadow-black/40 text-center overflow-hidden border border-[#e8ded3]">
-        {/* Top-Left Maroon Peony Corner Bouquet (No Background) */}
+        {/* Top-Left Maroon Peony Corner Bouquet */}
         <div className="absolute -top-4 -left-4 w-32 h-32 sm:w-36 sm:h-36 pointer-events-none select-none z-0">
           <img
-            src="/src/assets/images/flower_nobg.png"
+            src="/frame_nobg.png"
+            onError={(e) => {
+              (e.currentTarget as HTMLImageElement).src = '/src/assets/images/flower_nobg.png';
+            }}
             alt=""
             aria-hidden="true"
             className="w-full h-full object-contain -scale-x-100 opacity-95 drop-shadow-xs"
           />
         </div>
 
-        {/* Bottom-Right Maroon Peony Corner Bouquet (No Background) */}
+        {/* Bottom-Right Maroon Peony Corner Bouquet */}
         <div className="absolute -bottom-4 -right-4 w-32 h-32 sm:w-36 sm:h-36 pointer-events-none select-none z-0">
           <img
-            src="/src/assets/images/flower_nobg.png"
+            src="/frame_nobg.png"
+            onError={(e) => {
+              (e.currentTarget as HTMLImageElement).src = '/src/assets/images/flower_nobg.png';
+            }}
             alt=""
             aria-hidden="true"
             className="w-full h-full object-contain rotate-180 opacity-95 drop-shadow-xs"
           />
         </div>
 
-        {/* Card Content - elevated above corner florals with high contrast */}
+        {/* Card Content */}
         <div className="relative z-10">
           {/* Center Burgundy Heart Circle */}
           <div className="flex justify-center mt-1 mb-4">

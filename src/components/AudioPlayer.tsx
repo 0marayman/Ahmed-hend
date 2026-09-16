@@ -1,13 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Volume2, VolumeX, Disc, Music, SlidersHorizontal } from 'lucide-react';
-import { getAudioTrack } from '../utils/audioStorage';
-import { AudioChangerModal } from './AudioChangerModal';
+import { Volume2, VolumeX, Disc } from 'lucide-react';
 
 export const AudioPlayer: React.FC = () => {
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
-  const [audioUrl, setAudioUrl] = useState<string>('/wedding_audio.mp3');
-  const [trackTitle, setTrackTitle] = useState<string>('زفة أفراح - طلي بالأبيض');
-  const [isChangerOpen, setIsChangerOpen] = useState<boolean>(false);
+  const audioUrl = '/wedding_zaffa.mp3';
+  const trackTitle = 'زفة العروسين - طلي بالأبيض';
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   // Helper to start playback
@@ -21,40 +18,19 @@ export const AudioPlayer: React.FC = () => {
   };
 
   useEffect(() => {
-    // 1. Load active audio track
-    getAudioTrack().then((track) => {
-      setAudioUrl(track.url);
-      setTrackTitle(track.title);
-    });
-
-    // 2. Listen for track updates
-    const handleAudioUpdate = (e: Event) => {
-      const customEvent = e as CustomEvent<{ url: string; title: string }>;
-      if (customEvent.detail) {
-        setAudioUrl(customEvent.detail.url);
-        setTrackTitle(customEvent.detail.title);
-        if (audioRef.current) {
-          audioRef.current.src = customEvent.detail.url;
-          audioRef.current.play().then(() => setIsPlaying(true)).catch(console.warn);
-        }
-      }
-    };
-    window.addEventListener('wedding_audio_updated', handleAudioUpdate);
-
-    // 3. Listen for invitation open gesture
+    // 1. Listen for invitation open gesture
     const handleStartMusic = () => {
       startPlayback();
     };
     window.addEventListener('start_wedding_music', handleStartMusic);
 
-    // 4. Ambient automatic play: attempt immediately, and attach one-time user interaction listener
+    // 2. Ambient automatic play: attempt immediately, and attach one-time user interaction listener
     const onFirstUserGesture = () => {
       startPlayback();
       window.removeEventListener('click', onFirstUserGesture);
       window.removeEventListener('touchstart', onFirstUserGesture);
     };
 
-    // Attempt direct autoplay
     const timer = setTimeout(() => {
       startPlayback();
     }, 500);
@@ -65,7 +41,6 @@ export const AudioPlayer: React.FC = () => {
 
     return () => {
       clearTimeout(timer);
-      window.removeEventListener('wedding_audio_updated', handleAudioUpdate);
       window.removeEventListener('start_wedding_music', handleStartMusic);
       window.removeEventListener('click', onFirstUserGesture);
       window.removeEventListener('touchstart', onFirstUserGesture);
@@ -103,7 +78,7 @@ export const AudioPlayer: React.FC = () => {
           id="btn-toggle-music"
           onClick={togglePlay}
           aria-label={isPlaying ? 'إيقاف صوت الزفة' : 'تشغيل صوت الزفة'}
-          className={`group flex items-center gap-2 px-3 py-2 sm:px-3.5 sm:py-2 rounded-full backdrop-blur-md shadow-lg border transition-all duration-300 cursor-pointer ${
+          className={`group flex items-center gap-2 px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-full backdrop-blur-md shadow-lg border transition-all duration-300 cursor-pointer ${
             isPlaying
               ? 'bg-[#520b1b] text-white border-[#72152a] shadow-[#520b1b]/30'
               : 'bg-white/95 text-[#4a3931] border-[#e2d5c7] hover:border-[#520b1b]/40'
@@ -114,34 +89,17 @@ export const AudioPlayer: React.FC = () => {
             <Disc className={`w-4 h-4 sm:w-5 sm:h-5 ${isPlaying ? 'text-amber-200' : 'text-[#520b1b]'}`} />
           </div>
 
-          <span className="text-xs font-cairo font-medium truncate max-w-[120px] sm:max-w-[160px]">
-            {isPlaying ? trackTitle : 'تشغيل الصوت'}
+          <span className="text-xs sm:text-sm font-cairo font-medium truncate max-w-[130px] sm:max-w-[170px]">
+            {isPlaying ? trackTitle : 'تشغيل الزفة'}
           </span>
 
           {isPlaying ? (
-            <Volume2 className="w-3.5 h-3.5 text-amber-200 animate-pulse shrink-0" />
+            <Volume2 className="w-4 h-4 text-amber-200 animate-pulse shrink-0" />
           ) : (
-            <VolumeX className="w-3.5 h-3.5 text-stone-400 shrink-0" />
+            <VolumeX className="w-4 h-4 text-stone-400 shrink-0" />
           )}
         </button>
-
-        {/* Change Sound Button */}
-        <button
-          id="btn-open-audio-changer"
-          onClick={() => setIsChangerOpen(true)}
-          className="p-2 sm:p-2.5 rounded-full bg-white/95 text-[#520b1b] hover:bg-[#520b1b]/10 border border-[#e2d5c7] shadow-lg backdrop-blur-md transition cursor-pointer"
-          title="تغيير الصوت أو رفع زفة خاصة"
-          aria-label="تغيير الصوت"
-        >
-          <SlidersHorizontal className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-        </button>
       </div>
-
-      {/* Audio Changer Modal */}
-      <AudioChangerModal
-        isOpen={isChangerOpen}
-        onClose={() => setIsChangerOpen(false)}
-      />
     </>
   );
 };
