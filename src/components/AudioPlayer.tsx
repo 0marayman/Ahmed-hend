@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Volume2, VolumeX, Disc } from 'lucide-react';
+import { zaffaAudio } from '../assets';
 
 export const AudioPlayer: React.FC = () => {
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
-  const audioUrl = '/wedding_zaffa.mp3';
+  const audioUrl = zaffaAudio;
   const trackTitle = 'زفة العروسين - طلي بالأبيض';
   const audioRef = useRef<HTMLAudioElement | null>(null);
 

@@ -1,11 +1,12 @@
 import { CoupleMember, StoryMilestone, WeddingEvent, GalleryPhoto, GuestWish } from '../types';
+import { childhoodPhoto, ringsPhoto, couplePhoto } from '../assets';
 
 export const GROOM_DATA: CoupleMember = {
   name: 'احمد محى الدين',
   parents: 'ابن الأستاذ محى الدين وعائلته الكريمة',
   bio: 'مهندس ومحب للحياة والمغامرة، أسعد إنسان بأن اختاره الله شريكاً لهند.',
   quote: 'وجدت فيكِ السكينة، والوطن، وأجمل ما تمنيت في حياتي.',
-  avatar: '/IMG-20260916-WA0005.jpg',
+  avatar: couplePhoto,
   instagram: '@ahmed_mohy'
 };
 
@@ -14,7 +15,7 @@ export const BRIDE_DATA: CoupleMember = {
   parents: 'كريمة الأستاذ أيمن وعائلته الكريمة',
   bio: 'روح تملأ المكان دفئاً وجمالاً، تنتظر بداية فصلها الجديد مع أحمد.',
   quote: 'معك تبدأ كل حكايات السعادة، ولك في قلبي حب لا ينتهي.',
-  avatar: '/IMG-20260916-WA0005.jpg',
+  avatar: couplePhoto,
   instagram: '@hend_ayman'
 };
 
@@ -25,7 +26,7 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     title: 'بداية الحكاية',
     location: 'القاهرة، مصر',
     description: 'قصة بريئة جمعت قلبين من الصغر وكتب لها القدر أن تلتقي وتكتمل.',
-    image: '/IMG-20260916-WA0002.jpg'
+    image: childhoodPhoto
   },
   {
     id: 'milestone-2',
@@ -33,7 +34,7 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     title: 'خاتم العهد والوعد',
     location: 'القاهرة',
     description: 'خطوة نحو الحلم المشترك، وعهد بالمودة والرحمة لبناء حياة مباركة.',
-    image: '/IMG-20260916-WA0004.jpg'
+    image: ringsPhoto
   },
   {
     id: 'milestone-3',
@@ -41,7 +42,7 @@ export const STORY_MILESTONES: StoryMilestone[] = [
     title: 'يوم الزفاف الميمون',
     location: 'مسجد المشير طنطاوي - قاعة الساحة',
     description: 'اليوم الذي نتوجه بحضوركم ودعواتكم الصالحة التي تسعد قلوبنا.',
-    image: '/IMG-20260916-WA0005.jpg'
+    image: couplePhoto
   }
 ];
 
@@ -67,21 +68,21 @@ export const WEDDING_EVENTS: WeddingEvent[] = [
 export const GALLERY_PHOTOS: GalleryPhoto[] = [
   {
     id: 'photo-1',
-    url: '/IMG-20260916-WA0002.jpg',
+    url: childhoodPhoto,
     title: 'Save The Date',
     caption: 'أحمد وهند منذ الطفولة',
     category: 'portraits'
   },
   {
     id: 'photo-2',
-    url: '/IMG-20260916-WA0005.jpg',
+    url: couplePhoto,
     title: 'أحمد & هند',
     caption: 'معاً في أجمل أيام العمر',
     category: 'prewedding'
   },
   {
     id: 'photo-3',
-    url: '/IMG-20260916-WA0004.jpg',
+    url: ringsPhoto,
     title: 'دبل الخطوبة والورد',
     caption: 'رمز الوفاء والرباط المقدس',
     category: 'details'

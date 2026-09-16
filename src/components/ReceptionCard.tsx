@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Calendar as CalendarIcon, Check } from 'lucide-react';
+import { flowerFrame } from '../assets';
 
 interface ReceptionCardProps {
   targetDate?: string;
@@ -72,10 +73,7 @@ export const ReceptionCard: React.FC<ReceptionCardProps> = ({
       {/* Peony Flower without background on bottom-left corner */}
       <div className="absolute -bottom-4 -left-4 w-28 h-28 pointer-events-none select-none opacity-90">
         <img
-          src="/frame_nobg.png"
-          onError={(e) => {
-            (e.currentTarget as HTMLImageElement).src = '/src/assets/images/flower_nobg.png';
-          }}
+          src={flowerFrame}
           alt=""
           aria-hidden="true"
           className="w-full h-full object-contain -scale-x-100 drop-shadow-md"

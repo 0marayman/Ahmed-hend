@@ -1,4 +1,5 @@
 import React from 'react';
+import { flowerFrame } from '../assets';
 
 export const PartyInfoCard: React.FC = () => {
   return (
@@ -6,10 +7,7 @@ export const PartyInfoCard: React.FC = () => {
       {/* Delicate Peony Flower without background on top right corner */}
       <div className="absolute -top-3 -right-3 w-28 h-28 pointer-events-none select-none opacity-90">
         <img
-          src="/frame_nobg.png"
-          onError={(e) => {
-            (e.currentTarget as HTMLImageElement).src = '/src/assets/images/flower_nobg.png';
-          }}
+          src={flowerFrame}
           alt=""
           aria-hidden="true"
           className="w-full h-full object-contain drop-shadow-md"

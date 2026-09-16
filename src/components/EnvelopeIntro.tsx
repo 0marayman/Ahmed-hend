@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Heart } from 'lucide-react';
+import { flowerFrame } from '../assets';
 
 interface EnvelopeIntroProps {
   onOpen: () => void;
@@ -59,10 +60,7 @@ export const EnvelopeIntro: React.FC<EnvelopeIntroProps> = ({ onOpen }) => {
         {/* Top-Left Maroon Peony Corner Bouquet */}
         <div className="absolute -top-4 -left-4 w-32 h-32 sm:w-36 sm:h-36 pointer-events-none select-none z-0">
           <img
-            src="/frame_nobg.png"
-            onError={(e) => {
-              (e.currentTarget as HTMLImageElement).src = '/src/assets/images/flower_nobg.png';
-            }}
+            src={flowerFrame}
             alt=""
             aria-hidden="true"
             className="w-full h-full object-contain -scale-x-100 opacity-95 drop-shadow-xs"
@@ -72,10 +70,7 @@ export const EnvelopeIntro: React.FC<EnvelopeIntroProps> = ({ onOpen }) => {
         {/* Bottom-Right Maroon Peony Corner Bouquet */}
         <div className="absolute -bottom-4 -right-4 w-32 h-32 sm:w-36 sm:h-36 pointer-events-none select-none z-0">
           <img
-            src="/frame_nobg.png"
-            onError={(e) => {
-              (e.currentTarget as HTMLImageElement).src = '/src/assets/images/flower_nobg.png';
-            }}
+            src={flowerFrame}
             alt=""
             aria-hidden="true"
             className="w-full h-full object-contain rotate-180 opacity-95 drop-shadow-xs"

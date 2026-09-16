@@ -1,7 +1,8 @@
 import React from 'react';
+import { childhoodPhoto } from '../assets';
 
 export const SaveTheDateHero: React.FC = () => {
-  const photoUrl = '/IMG-20260916-WA0002.jpg';
+  const photoUrl = childhoodPhoto;
 
   return (
     <div className="w-full text-center pt-8 pb-4">
