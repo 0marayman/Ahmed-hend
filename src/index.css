@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-script: 'Alex Brush', cursive;
+    --font-serif: 'Cormorant Garamond', Georgia, serif;
+    --font-display: 'Playfair Display', Georgia, serif;
+    --font-sans: 'Cairo', sans-serif;
+    --font-amiri: 'Amiri', serif;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    direction: rtl;
+  }
+}
+
+.font-script {
+  font-family: 'Alex Brush', cursive;
+}
+
+.font-serif-wedding {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+.font-display {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+.font-cairo {
+  font-family: 'Cairo', sans-serif;
+}
+
+.font-amiri {
+  font-family: 'Amiri', serif;
+}
+
+/* Custom smooth scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f5f2eb;
+}
+::-webkit-scrollbar-thumb {
+  background: #d4c5b2;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #bfa88f;
+}
+
+/* Floating animation */
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(1deg);
+  }
+}
+
+.animate-float-slow {
+  animation: floatSlow 6s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.75;
+    transform: scale(1.05);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 4s ease-in-out infinite;
+}
+
+@keyframes floatHeart {
+  0% {
+    transform: translateY(0px) scale(0.8) rotate(0deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.7;
+  }
+  80% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(-400px) scale(1.2) rotate(15deg);
+    opacity: 0;
+  }
+}
+
+.animate-float-heart {
+  animation: floatHeart 6s linear infinite;
+}
+

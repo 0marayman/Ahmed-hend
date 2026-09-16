@@ -1,0 +1,6 @@
+{
+  "name": "Ahmed & Hend Wedding Invitation",
+  "description": "Digital wedding invitation for Ahmed Mohy Eldin & Hend Ayman at Field Marshal Tantawi Mosque, Cairo on 26 September 2026.",
+  "requestFramePermissions": ["geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
